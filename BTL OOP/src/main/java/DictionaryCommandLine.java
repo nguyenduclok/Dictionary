@@ -1,16 +1,21 @@
-public class DictionaryCommandLine {
+public class DictionaryCommandLine extends Dictionary {
+    public void showAllWords() {
+        System.out.println("No\t| English\t|Vietnamese");
+        for (int i = 0; i < wordInDictionary.size(); i++) {
+            System.out.println((i + 1) + "\t" + wordInDictionary.get(i).toString());
+        }
+    }
+
     public void dictionaryBasic() {
         DictionaryManagement insertDictionary = new DictionaryManagement();
-        DictionaryCommandline showDictionary = new DictionaryCommandline();
         insertDictionary.insertFromCommandline();
-        showDictionary.showAllWords();
+        this.showAllWords();
     }
 
     public void dictionaryAdvanced() {
-        DictionaryCommandline dictionary1 = new DictionaryCommandline();
         DictionaryManagement dictionary2 = new DictionaryManagement();
         dictionary2.insertFromFile();
-        dictionary1.showAllWords();
+        this.showAllWords();
         dictionary2.dictionaryLookup();
     }
 }
