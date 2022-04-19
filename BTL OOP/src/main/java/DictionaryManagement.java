@@ -38,6 +38,7 @@ public class DictionaryManagement extends Dictionary {
     }
 
     public void dictionaryLookup() {
+        System.out.println("Enter a word you want to look up:");
         Scanner scanner = new Scanner(System.in);
         String answer = "There's no such word";
         String wordLookUp = scanner.nextLine();
@@ -50,39 +51,65 @@ public class DictionaryManagement extends Dictionary {
         System.out.println(answer);
     }
 
-    public void editDictionary(String str) {
+    public void addWordToDictionary() {
+        System.out.println("Enter word target and word explain you want to add: ");
         Scanner scanner = new Scanner(System.in);
+        String wordTarget = scanner.nextLine();
+        String wordExplain = scanner.nextLine();
+        wordInDictionary.add(new Word(wordTarget, wordExplain));
+    }
+
+    public void editWordInDictionary() {
+        System.out.println("Enter word target or word explain you want to edit:");
+        Scanner scanner = new Scanner(System.in);
+        String str = scanner.nextLine();
+        boolean isExist = false;
         for (Word word : wordInDictionary) {
             if (str.equals(word.getWord_explain())) {
-                System.out.println("Insert word edit:");
-                String newWordExplain = scanner.nextLine();
-                word.setWord_explain(newWordExplain);
-            } else if (str.equals(word.getWord_target())) {
-                System.out.println("Insert word edit:");
+                System.out.println("Enter a new word target:");
                 String newWordTarget = scanner.nextLine();
                 word.setWord_target(newWordTarget);
-            }
-        }
-    }
-
-    public void deleteDictionary(String str) {
-        for (Word word : wordInDictionary) {
-            if (str.equals(word.getWord_explain())) {
-                word.setWord_explain("");
+                isExist = true;
+                break;
             } else if (str.equals(word.getWord_target())) {
-                word.setWord_target("");
+                System.out.println("Enter a new word explain:");
+                String newWordExplain = scanner.nextLine();
+                word.setWord_explain(newWordExplain);
+                isExist = true;
+                break;
+            }
+        }
+        if (!isExist) {
+            System.out.println("The word you enter is invalid.");
+        }
+    }
+
+    public void deleteDictionary() {
+        System.out.println("Enter a word you want to delete:");
+        Scanner scanner = new Scanner(System.in);
+        String str = scanner.nextLine();
+        for (Word word : wordInDictionary) {
+            if (str.equals(word.getWord_target())) {
+                wordInDictionary.remove(word);
+                break;
             }
         }
     }
 
-    public List<String> dictionarySearcher(String str) {
-        List<String> wordsList = new ArrayList<String>();
+    public void dictionarySearcher() {
+        System.out.println("Enter a word you want to search:");
+        Scanner scanner = new Scanner(System.in);
+        String str = scanner.nextLine();
+        List<Word> wordsList = new ArrayList<Word>();
         for (Word word : wordInDictionary) {
             if (word.getWord_target().startsWith(str)) {
-                wordsList.add(word.getWord_target());
+                wordsList.add(new Word(word.getWord_target(), word.getWord_explain()));
             }
         }
-        return wordsList;
+        System.out.println("No\t| English\t|Vietnamese");
+        for (int i = 0; i < wordsList.size(); i++) {
+            System.out.println((i + 1) + "\t" + wordsList.get(i).toString());
+        }
     }
 
     public static void dictionaryExportToFile() throws IOException {
