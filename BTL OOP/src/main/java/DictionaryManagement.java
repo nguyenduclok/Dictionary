@@ -25,7 +25,7 @@ public class DictionaryManagement extends Dictionary {
             BufferedReader br = new BufferedReader(fr);
             String line;
             while ((line = br.readLine()) != null) {
-                int index = line.lastIndexOf("\t");
+                int index = line.indexOf("\t");
                 String word_target = line.substring(0, index);
                 String word_explain = line.substring(index + 1);
                 addWord(new Word(word_target, word_explain));
