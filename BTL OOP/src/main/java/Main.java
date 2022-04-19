@@ -3,7 +3,7 @@ import java.io.IOException;
 public class Main {
     public static void main(String[] args) {
         DictionaryCommandLine dictionaryCommandLine = new DictionaryCommandLine();
-        DictionaryCommandLineTest dictionaryCommandline = new DictionaryCommandLineTest();
+        DictionaryCommandline dictionaryCommandline = new DictionaryCommandline();
         dictionaryCommandLine.dictionaryBasic();
         dictionaryCommandline.showAllWords();
         try {
