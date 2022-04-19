@@ -1,13 +1,13 @@
 public class DictionaryCommandLine {
     public void dictionaryBasic() {
         DictionaryManagement insertDictionary = new DictionaryManagement();
-        DictionaryCommandLineTest showDictionary = new DictionaryCommandLineTest();
+        DictionaryCommandline showDictionary = new DictionaryCommandline();
         insertDictionary.insertFromCommandline();
         showDictionary.showAllWords();
     }
 
     public void dictionaryAdvanced() {
-        DictionaryCommandLineTest dictionary1 = new DictionaryCommandLineTest();
+        DictionaryCommandline dictionary1 = new DictionaryCommandline();
         DictionaryManagement dictionary2 = new DictionaryManagement();
         dictionary2.insertFromFile();
         dictionary1.showAllWords();
