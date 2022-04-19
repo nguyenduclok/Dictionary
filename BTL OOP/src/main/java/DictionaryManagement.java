@@ -20,7 +20,7 @@ public class DictionaryManagement extends Dictionary {
 
     public void insertFromFile() {
         try {
-            File myFile = new File("D:\\BTL OOP\\src\\main\\assets\\dictionary.txt");
+            File myFile = new File("src\\main\\assets\\dictionary.txt");
             FileReader fr = new FileReader(myFile);
             BufferedReader br = new BufferedReader(fr);
             String line;
@@ -86,7 +86,7 @@ public class DictionaryManagement extends Dictionary {
     }
 
     public static void dictionaryExportToFile() throws IOException {
-        FileWriter writer = new FileWriter("D:\\BTL OOP\\src\\main\\assets\\dictionaries.txt");
+        FileWriter writer = new FileWriter("src\\main\\assets\\dictionaries.txt");
         for (Word word : wordInDictionary) {
             writer.write(String.format("%s\t%s\n", word.getWord_target(), word.getWord_explain()));
         }
